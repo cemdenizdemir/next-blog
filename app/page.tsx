@@ -1,5 +1,8 @@
-import Image from "next/image";
-
 export default function Home() {
-  return <div>next</div>;
+  return (
+    <div>
+      Welcome to Blog app, You can read and write blogs in many different
+      categories with this app (not yet).
+    </div>
+  );
 }
