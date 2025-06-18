@@ -1,33 +1,32 @@
-"use client";
 import Link from "next/link";
+// import { useTranslations } from "next-intl";
 
-import { type getDictionary } from "../get-dictionary";
+import { getTranslations } from "next-intl/server";
 
-export default function Navbar({
-  dictionary,
-}: {
-  dictionary: Awaited<ReturnType<typeof getDictionary>>["navbar"];
-}) {
+export default async function Navbar() {
+  // const t = useTranslations("navbar");
+  const t = await getTranslations("navbar");
+
   return (
     <div className="bg-emerald-300">
       <ul className="flex justify-between items-center max-w-[1000px] mx-auto  ">
         <div className="flex [&>*]:py-3 [&>*]:px-4 [&>*]:hover:bg-emerald-400 [&>*]:cursor-pointer">
           <li>
-            <Link href="/">{dictionary.homePage}</Link>
+            <Link href="/">{t("homePage")} </Link>
           </li>
           <li>
-            <Link href="/categories">{dictionary.categories}</Link>
+            <Link href="/categories">{t("categories")} </Link>
           </li>
           <li>
-            <Link href="/create-blog">{dictionary.createBlog}</Link>
+            <Link href="/create-blog">{t("createBlog")} </Link>
           </li>
         </div>
         <div className="flex">
           <li className="p-3 hover:bg-emerald-400 cursor-pointer">
-            <Link href="/login">{dictionary.login} </Link>
+            <Link href="/login">{t("login")} </Link>
           </li>
           <li className="p-3 hover:bg-emerald-400 cursor-pointer">
-            <Link href="/signup">{dictionary.signup} </Link>
+            <Link href="/signup">{t("signup")} </Link>
           </li>
         </div>
       </ul>

@@ -1,0 +1,16 @@
+{
+  "navbar": {
+    "homePage": "Ana Sayfa",
+    "categories": "Kategoriler",
+    "createBlog": "Blog Oluştur",
+    "login": "Giriş Yap",
+    "signup": "Kayıt Ol"
+  },
+
+  "homePage": {
+    "title": "Selam Dünya",
+    "welcome": {
+      "title": "Blog uygulamasına hoş geldiniz. Bu uygulamayla (henüz değil) birçok farklı kategoride blog okuyabilir ve yazabilirsiniz."
+    }
+  }
+}
