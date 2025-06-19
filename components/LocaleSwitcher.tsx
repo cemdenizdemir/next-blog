@@ -4,11 +4,17 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  // SelectValue,
 } from "@/components/ui/select";
 import { useLocale } from "next-intl";
 import { Locale, routing, usePathname, useRouter } from "@/i18n/routing";
 import { useParams } from "next/navigation";
+
+import type { LocaleOptions } from "@/types/locale_options";
+
+import localeOptionsJson from "@/data/locale_options.json";
+import Image from "next/image";
+const localeOptions = localeOptionsJson as LocaleOptions;
 
 export default function LocaleSwitcher() {
   // const [selectedOption, setSelectedOption] = useState("tr");
@@ -28,15 +34,32 @@ export default function LocaleSwitcher() {
   }
 
   return (
-    <div>
+    <div className="[&>*]:hover:cursor-pointer ">
       <Select defaultValue={locale} onValueChange={onSelectChange}>
-        <SelectTrigger className="border-emerald-400 bg-white">
-          <SelectValue />
+        <SelectTrigger className="border-[var(--pri-400)] bg-white">
+          {/* <SelectValue /> */}
+          <Image
+            src={`/language-flags/${locale}.png`}
+            width={25}
+            height={1}
+            alt={locale}
+          />
+          {locale.toUpperCase()}
         </SelectTrigger>
         <SelectContent>
           {routing.locales.map((locale) => (
-            <SelectItem value={locale} key={locale}>
-              {locale}
+            <SelectItem
+              value={locale}
+              key={locale}
+              className="hover:cursor-pointer"
+            >
+              <Image
+                src={`/language-flags/${locale}.png`}
+                width={25}
+                height={1}
+                alt={locale}
+              />
+              {localeOptions[locale as Locale].label}
             </SelectItem>
           ))}
         </SelectContent>

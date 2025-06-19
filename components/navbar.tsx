@@ -9,9 +9,9 @@ export default async function Navbar() {
   const t = await getTranslations("navbar");
 
   return (
-    <div className="bg-emerald-300">
-      <ul className="flex justify-between items-center max-w-[1000px] mx-auto [&>*]:flex [&>*]:items-center [&>*>*]:py-3 [&>*>*]:px-4 [&>*>*]:hover:bg-emerald-400 [&>*>*]:cursor-pointer ">
-        <div>
+    <div className="bg-[var(--pri-200)] border-b border-[var(--pri-400)]">
+      <ul className="container flex justify-between [&>*>*]:hover:bg-[var(--pri-300)] [&>*>*]:py-2 [&>*>*]:px-4 [&>*]:flex [&>*>*]:flex [&>*>*]:items-center [&>*>*]:h-full   [&>*>*]:cursor-pointer ">
+        <div className="flex">
           <li>
             <Link href="/">{t("homePage")} </Link>
           </li>
@@ -30,7 +30,9 @@ export default async function Navbar() {
             <Link href="/signup">{t("signup")} </Link>
           </li>
           <li>
-            <LocaleSwitcher />
+            <div>
+              <LocaleSwitcher />
+            </div>
           </li>
         </div>
       </ul>
