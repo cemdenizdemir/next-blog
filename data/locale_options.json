@@ -1,8 +1,10 @@
 {
   "tr": {
-    "label": "Türkçe"
+    "label": "Türkçe",
+    "id": 2
   },
   "en": {
-    "label": "English"
+    "label": "English",
+    "id": 1
   }
 }
