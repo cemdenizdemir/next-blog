@@ -28,9 +28,10 @@ export default async function RootLayout({
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params: { locale: Locale };
+  params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await params;
+
   if (!routing.locales.includes(locale as Locale)) {
     notFound();
   }
@@ -42,10 +43,10 @@ export default async function RootLayout({
     <NextIntlClientProvider messages={messages} locale={locale}>
       <html lang={locale}>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-emerald-50`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased  `}
         >
           <Navbar />
-          <div className="flex justify-center min-h-screen mt-4 font-[family-name:var(--font-geist-sans)]">
+          <div className="container flex justify-center min-h-screen mt-4 font-[family-name:var(--font-geist-sans)]">
             {children}
           </div>
         </body>
