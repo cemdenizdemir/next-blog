@@ -1,32 +1,41 @@
 import Link from "next/link";
-// import { useTranslations } from "next-intl";
+// import { useTranslations, useLocale } from "next-intl";
 
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
+import LocaleSwitcher from "./LocaleSwitcher";
 
 export default async function Navbar() {
   // const t = useTranslations("navbar");
+  // const locale = useLocale();
+
   const t = await getTranslations("navbar");
+  const locale = await getLocale();
 
   return (
-    <div className="bg-emerald-300">
-      <ul className="flex justify-between items-center max-w-[1000px] mx-auto  ">
-        <div className="flex [&>*]:py-3 [&>*]:px-4 [&>*]:hover:bg-emerald-400 [&>*]:cursor-pointer">
+    <div className="bg-[var(--pri-200)] border-b border-[var(--pri-400)]">
+      <ul className="container flex justify-between [&>*>*]:hover:bg-[var(--pri-300)] [&>*>*]:py-2 [&>*>*]:px-4 [&>*]:flex [&>*>*]:flex [&>*>*]:items-center [&>*>*]:h-full   [&>*>*]:cursor-pointer ">
+        <div className="flex">
           <li>
-            <Link href="/">{t("homePage")} </Link>
+            <Link href={`/${locale}/`}>{t("homePage")}</Link>
           </li>
           <li>
-            <Link href="/categories">{t("categories")} </Link>
+            <Link href={`/${locale}/categories`}>{t("categories")}</Link>
           </li>
           <li>
-            <Link href="/create-blog">{t("createBlog")} </Link>
+            <Link href={`/${locale}/create-blog`}>{t("createBlog")}</Link>
           </li>
         </div>
-        <div className="flex">
-          <li className="p-3 hover:bg-emerald-400 cursor-pointer">
-            <Link href="/login">{t("login")} </Link>
+        <div>
+          <li>
+            <Link href={`/${locale}/login`}>{t("login")}</Link>
           </li>
-          <li className="p-3 hover:bg-emerald-400 cursor-pointer">
-            <Link href="/signup">{t("signup")} </Link>
+          <li>
+            <Link href={`/${locale}/signup`}>{t("signup")}</Link>
+          </li>
+          <li>
+            <div>
+              <LocaleSwitcher />
+            </div>
           </li>
         </div>
       </ul>
