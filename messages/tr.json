@@ -12,5 +12,17 @@
     "welcome": {
       "title": "Blog uygulamasına hoş geldiniz. Bu uygulamayla (henüz değil) birçok farklı kategoride blog okuyabilir ve yazabilirsiniz."
     }
+  },
+  "categories": {
+    "Positive": "Pozitif",
+    "Grow": "Büyüme",
+    "Charge": "Şarj",
+    "Trade": "Ticaret",
+    "Certain": "Kesin",
+    "Night": "Gece",
+    "Lead": "Liderlik",
+    "Key": "Anahtar",
+    "Beautiful": "Güzel",
+    "Stage": "Sahne"
   }
 }
