@@ -1,4 +1,7 @@
 import { Locale } from "@/i18n/routing";
+import { BaseService } from "@/services/base";
+import { getTranslations } from "next-intl/server";
+import Image from "next/image";
 
 export default async function Categories({
   params,
@@ -6,11 +9,27 @@ export default async function Categories({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations("categories");
 
-  const res = await fetch(`${process.env.PAGE_URL}/${locale}/api/categories`);
-  const categories = await res.json();
+  const categoryService = new BaseService("categories");
+  const categories = await categoryService.getAll();
 
-  console.log(categories);
+  // const data = await categoryService.getPaginated({ page: 1, pageSize: 5 });
+  // console.log("-- data page", data);
 
-  return <div>Locale: {locale}</div>;
+  return (
+    <div>
+      {categories!.map((category) => (
+        <div key={category.id}>
+          <Image
+            src={`/category-images/${category.name}.jpg`}
+            alt={category.name}
+            width={250}
+            height={250}
+          />
+          <p>{t(category.name)}</p>
+        </div>
+      ))}
+    </div>
+  );
 }
