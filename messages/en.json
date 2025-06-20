@@ -12,6 +12,7 @@
       "title": "Wellcome to Blog app, You can read and write blogs in many different categories with this app (not yet)."
     }
   },
+
   "categories": {
     "Positive": "Positive",
     "Grow": "Grow",
@@ -24,4 +25,5 @@
     "Beautiful": "Beautiful",
     "Stage": "Stage"
   }
+>>>>>>>>> Temporary merge branch 2
 }
