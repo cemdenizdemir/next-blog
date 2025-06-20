@@ -3,6 +3,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+.container {
+  @apply max-w-[900px] mx-auto;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -44,6 +48,18 @@
 }
 
 :root {
+  --pri-50: #ecfdf5;
+  --pri-100: #d1fae5;
+  --pri-200: #a7f3d0;
+  --pri-300: #6ee7b7;
+  --pri-400: #34d399;
+  --pri-500: #10b981;
+  --pri-600: #059669;
+  --pri-700: #047857;
+  --pri-800: #065f46;
+  --pri-900: #064e3b;
+  --pri-950: #022c22;
+
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
