@@ -19,21 +19,17 @@ export default async function Navbar() {
             <li>{t("homePage")}</li>
           </Link>
           <Link href={`/${locale}/categories`}>
-            {" "}
             <li>{t("categories")}</li>
           </Link>
           <Link href={`/${locale}/create-blog`}>
-            {" "}
             <li>{t("createBlog")}</li>
           </Link>
         </div>
         <div>
           <Link href={`/${locale}/login`}>
-            {" "}
             <li>{t("login")}</li>
           </Link>
           <Link href={`/${locale}/signup`}>
-            {" "}
             <li>{t("signup")}</li>
           </Link>
           <li>
