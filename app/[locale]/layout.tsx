@@ -43,10 +43,10 @@ export default async function RootLayout({
     <NextIntlClientProvider messages={messages} locale={locale}>
       <html lang={locale}>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased  `}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[var(--pri-50)]`}
         >
           <Navbar />
-          <div className="container flex justify-center min-h-screen mt-4 font-[family-name:var(--font-geist-sans)]">
+          <div className="container min-h-screen mt-4 font-[family-name:var(--font-geist-sans)]">
             {children}
           </div>
         </body>

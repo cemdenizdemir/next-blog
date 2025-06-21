@@ -4,7 +4,11 @@
 @custom-variant dark (&:is(.dark *));
 
 .container {
-  @apply max-w-[900px] mx-auto;
+  @apply max-w-[1200px] mx-auto;
+}
+
+@theme {
+  --xs: var(--xs);
 }
 
 @theme inline {
@@ -48,17 +52,19 @@
 }
 
 :root {
-  --pri-50: #ecfdf5;
-  --pri-100: #d1fae5;
-  --pri-200: #a7f3d0;
-  --pri-300: #6ee7b7;
-  --pri-400: #34d399;
-  --pri-500: #10b981;
-  --pri-600: #059669;
-  --pri-700: #047857;
-  --pri-800: #065f46;
-  --pri-900: #064e3b;
-  --pri-950: #022c22;
+  --pri-50: #fefce8;
+  --pri-100: #fef9c3;
+  --pri-200: #fef08a;
+  --pri-300: #fde047;
+  --pri-400: #facc15;
+  --pri-500: #eab308;
+  --pri-600: #ca8a04;
+  --pri-700: #a16207;
+  --pri-800: #854d0e;
+  --pri-900: #713f12;
+  --pri-950: #422006;
+
+  --xs: 400px;
 
   --radius: 0.625rem;
   --background: oklch(1 0 0);

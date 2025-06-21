@@ -1,7 +1,8 @@
 import { Locale } from "@/i18n/routing";
 import { BaseService } from "@/services/base";
 import { getTranslations } from "next-intl/server";
-import Image from "next/image";
+// import Image from "next/image";
+import { CategoriesCarousel } from "@/app/[locale]/categories/CategoriesCarousel";
 
 export default async function Categories({
   params,
@@ -19,7 +20,7 @@ export default async function Categories({
 
   return (
     <div>
-      {categories!.map((category) => (
+      {/* {categories!.map((category) => (
         <div key={category.id}>
           <Image
             src={`/category-images/${category.name}.jpg`}
@@ -29,7 +30,9 @@ export default async function Categories({
           />
           <p>{t(category.name)}</p>
         </div>
-      ))}
+      ))} */}
+
+      <CategoriesCarousel categories={categories} />
     </div>
   );
 }

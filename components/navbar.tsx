@@ -12,13 +12,13 @@ export default async function Navbar() {
   const locale = await getLocale();
 
   return (
-    <div className="bg-[var(--pri-200)] border-b border-[var(--pri-400)]">
+    <div className="bg-[var(--pri-200)] border-b border-[var(--pri-300)]">
       <ul className="container flex justify-between [&>*>*]:hover:bg-[var(--pri-300)] [&>*>*]:py-2 [&>*>*]:px-4 [&>*]:flex [&>*>*]:flex [&>*>*]:items-center [&>*>*]:h-full   [&>*>*]:cursor-pointer ">
         <div className="flex">
-          <Link href={`/${locale}/`}>
+          <Link href={`${process.env.PAGE_URL}/${locale}/`}>
             <li>{t("homePage")}</li>
           </Link>
-          <Link href={`/${locale}/categories`}>
+          <Link href={`${process.env.PAGE_URL}/${locale}/categories`}>
             <li>{t("categories")}</li>
           </Link>
           <Link href={`/${locale}/create-blog`}>
@@ -26,10 +26,10 @@ export default async function Navbar() {
           </Link>
         </div>
         <div>
-          <Link href={`/${locale}/login`}>
+          <Link href={`${process.env.PAGE_URL}/${locale}/login`}>
             <li>{t("login")}</li>
           </Link>
-          <Link href={`/${locale}/signup`}>
+          <Link href={`${process.env.PAGE_URL}/${locale}/signup`}>
             <li>{t("signup")}</li>
           </Link>
           <li>

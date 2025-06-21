@@ -10,7 +10,7 @@ import { useLocale } from "next-intl";
 import { Locale, routing, usePathname, useRouter } from "@/i18n/routing";
 import { useParams } from "next/navigation";
 
-import type { LocaleOptions } from "@/types/locale_options";
+import type { LocaleOptions } from "@/types/types";
 
 import localeOptionsJson from "@/data/locale_options.json";
 import Image from "next/image";
@@ -36,7 +36,7 @@ export default function LocaleSwitcher() {
   return (
     <div className="[&>*]:hover:cursor-pointer ">
       <Select defaultValue={locale} onValueChange={onSelectChange}>
-        <SelectTrigger className="border-[var(--pri-400)] bg-white">
+        <SelectTrigger className="border-[var(--pri-400)] bg-white bg-[var(--pri-100)]">
           {/* <SelectValue /> */}
           <Image
             src={`/language-flags/${locale}.png`}
@@ -46,12 +46,12 @@ export default function LocaleSwitcher() {
           />
           {locale.toUpperCase()}
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="bg-[var(--pri-100)] ">
           {routing.locales.map((locale) => (
             <SelectItem
               value={locale}
               key={locale}
-              className="hover:cursor-pointer"
+              className="focus:cursor-pointer focus:bg-[var(--pri-200)] "
             >
               <Image
                 src={`/language-flags/${locale}.png`}

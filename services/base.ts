@@ -1,3 +1,4 @@
+import { Categories } from "@/types/types";
 import fs from "fs/promises";
 import path from "path";
 
@@ -8,7 +9,8 @@ export class BaseService {
     this.serviceName = serviceName;
   }
 
-  async fetchData(): Promise<{ id: string; name: string }[] | null> {
+  async fetchData(): Promise<Categories | null> {
+    // async fetchData(): Promise<object[] | null> {
     try {
       const filePath = path.join(
         process.cwd(),
