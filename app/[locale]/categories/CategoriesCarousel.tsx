@@ -2,7 +2,7 @@
 import * as React from "react";
 import Image from "next/image";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -21,6 +21,7 @@ export function CategoriesCarousel({
   categories: Categories | null;
 }) {
   const t = useTranslations("categories");
+  const locale = useLocale();
 
   return (
     <div className="px-16 relative">
@@ -28,7 +29,7 @@ export function CategoriesCarousel({
         <CarouselContent className="-ml-1 grid lg:flex sm:grid-cols-3">
           {categories!.map((category, index) => (
             <CarouselItem className="pl-1 basis-1/4 " key={index}>
-              <Link href={""}>
+              <Link href={`/${locale}/categories/${index}`}>
                 <div className="p-1">
                   <Card className="py-0 bg-[var(--pri-100)] border border-[var(--pri-300)]">
                     <CardContent className="flex aspect-square items-center justify-center ">

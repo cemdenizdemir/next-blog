@@ -3,6 +3,7 @@ import { BaseService } from "@/services/base";
 import { getTranslations } from "next-intl/server";
 // import Image from "next/image";
 import { CategoriesCarousel } from "@/app/[locale]/categories/CategoriesCarousel";
+import { CategoryProps } from "@/types/types";
 
 export default async function Categories({
   params,
@@ -12,7 +13,7 @@ export default async function Categories({
   const { locale } = await params;
   const t = await getTranslations("categories");
 
-  const categoryService = new BaseService("categories");
+  const categoryService = new BaseService<CategoryProps>("categories");
   const categories = await categoryService.getAll();
 
   // const data = await categoryService.getPaginated({ page: 1, pageSize: 5 });
