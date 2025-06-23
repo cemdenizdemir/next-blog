@@ -65,7 +65,7 @@ export class BaseService<T> {
 
     paginatedData = paginatedData.map((data) => ({
       ...data,
-      content: data.content.slice(0, 100),
+      content: data.content.slice(0, 200),
     }));
 
     return paginatedData;
