@@ -12,8 +12,8 @@ export default async function Navbar() {
   const locale = await getLocale();
 
   return (
-    <div className="bg-[var(--pri-200)] border-b border-[var(--pri-300)]">
-      <ul className="container flex justify-between [&>*>*]:hover:bg-[var(--pri-300)] [&>*>*]:py-2 [&>*>*]:px-4 [&>*]:flex [&>*>*]:flex [&>*>*]:items-center [&>*>*]:h-full   [&>*>*]:cursor-pointer ">
+    <div className="bg-[var(--pri-100)] border-b-2 border-[var(--sec-500)]">
+      <ul className="container flex justify-between [&>*>*]:hover:bg-[var(--pri-200)] [&>*>*]:py-2 [&>*>*]:px-4 [&>*]:flex [&>*>*]:flex [&>*>*]:items-center [&>*>*]:h-full   [&>*>*]:cursor-pointer ">
         <div className="flex">
           <Link href={`${process.env.PAGE_URL}/${locale}/`}>
             <li>{t("homePage")}</li>

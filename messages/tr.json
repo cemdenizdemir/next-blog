@@ -24,5 +24,9 @@
     "Key": "Anahtar",
     "Beautiful": "Güzel",
     "Stage": "Sahne"
+  },
+  "pagination": {
+    "previous": "Önceki",
+    "next": "Sonraki"
   }
 }

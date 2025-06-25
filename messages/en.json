@@ -23,5 +23,9 @@
     "Key": "Key",
     "Beautiful": "Beautiful",
     "Stage": "Stage"
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next"
   }
 }

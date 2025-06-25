@@ -27,13 +27,17 @@ export class BaseService<T> {
   }
 
   async getAll() {
-    const data = await this.fetchData();
-    return data;
+    try {
+      const data = await this.fetchData();
+      return data;
+    } catch (e) {
+      return null;
+    }
   }
 
   async getPaginated({
     page = 1,
-    pageSize = 10,
+    pageSize = Number(process.env.PAGINATION_COUNT),
     locale,
     category_id,
   }: {
@@ -42,32 +46,39 @@ export class BaseService<T> {
     locale?: string;
     category_id?: string;
   }) {
-    const data = await this.fetchData();
+    try {
+      const data = await this.fetchData();
 
-    let filteredData = data;
+      let filteredData = data;
 
-    if ((this.serviceName = "blogs") && filteredData != null) {
-      if (locale) {
-        filteredData = filteredData!.filter(
-          (item: BlogProps) => item.language_id === 1
-        );
+      if ((this.serviceName = "blogs") && filteredData != null) {
+        if (locale) {
+          filteredData = filteredData!.filter(
+            (item: BlogProps) => item.language_id === 1
+          );
+        }
+        if (category_id) {
+          filteredData = filteredData!.filter(
+            (item: BlogProps) => item.category_id === 1
+          );
+        }
       }
-      if (category_id) {
-        filteredData = filteredData!.filter(
-          (item: BlogProps) => item.category_id === 1
-        );
-      }
+
+      const startIndex = (page - 1) * pageSize;
+      const endIndex = startIndex + pageSize;
+      let paginatedData: BlogProps[] = filteredData!.slice(
+        startIndex,
+        endIndex
+      );
+
+      paginatedData = paginatedData.map((data) => ({
+        ...data,
+        content: data.content.slice(0, 200),
+      }));
+
+      return { paginatedData: paginatedData, totalLength: filteredData.length };
+    } catch (e) {
+      return null;
     }
-
-    const startIndex = (page - 1) * pageSize;
-    const endIndex = startIndex + pageSize;
-    let paginatedData: BlogProps[] = filteredData!.slice(startIndex, endIndex);
-
-    paginatedData = paginatedData.map((data) => ({
-      ...data,
-      content: data.content.slice(0, 200),
-    }));
-
-    return paginatedData;
   }
 }

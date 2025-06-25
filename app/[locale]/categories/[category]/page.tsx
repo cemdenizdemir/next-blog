@@ -1,6 +1,7 @@
 "use server";
 import { BaseService } from "@/services/base";
 import BlogList from "./BlogList";
+import PaginationBar from "@/components/paginationBar";
 
 export default async function Category({
   params,
@@ -9,23 +10,35 @@ export default async function Category({
   params: { category: string };
   searchParams?: { [key: string]: number };
 }) {
-  const page = searchParams?.page ?? 1;
+  const pageParam = Number((await searchParams)?.page);
+  // const page = Number(pageParam && pageParam > 0 ? pageParam : 1);
+  const page = pageParam! > 0 ? pageParam : 1;
+
+  // const page = Number(pageParam ?? 1);
+
+  // console.log("PageParam: ", page);
 
   const { category } = await params;
   const blogService = new BaseService("blogs");
   const blogs = await blogService.getPaginated({
     page: page,
-    pageSize: 10,
+    pageSize: Number(process.env.PAGINATION_COUNT),
     category_id: category,
   });
 
-  console.log("---- categori bloglar : ", blogs);
+  // console.log("---- categori bloglar : ", blogs);
 
-  console.log("search paramlar: ", page);
+  console.log("blog arr uzunluk: ", blogs!.totalLength);
 
   return (
     <div>
-      <BlogList blogs={blogs} />
+      <PaginationBar
+        totalPageCount={
+          blogs!.totalLength / Number(process.env.PAGINATION_COUNT)
+        }
+      >
+        <BlogList blogs={blogs!.paginatedData} />
+      </PaginationBar>
     </div>
   );
 }

@@ -36,7 +36,7 @@ export default function LocaleSwitcher() {
   return (
     <div className="[&>*]:hover:cursor-pointer ">
       <Select defaultValue={locale} onValueChange={onSelectChange}>
-        <SelectTrigger className="border-[var(--pri-400)] bg-white bg-[var(--pri-100)]">
+        <SelectTrigger className="border-[var(--sec-500)] border-2 bg-white bg-[var(--pri-100)]">
           {/* <SelectValue /> */}
           <Image
             src={`/language-flags/${locale}.png`}
