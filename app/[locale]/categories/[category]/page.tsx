@@ -23,7 +23,7 @@ export default async function Category({
   const blogs = await blogService.getPaginated({
     page: page,
     pageSize: Number(process.env.PAGINATION_COUNT),
-    category_id: category,
+    category_id: Number(category),
   });
 
   // console.log("---- categori bloglar : ", blogs);

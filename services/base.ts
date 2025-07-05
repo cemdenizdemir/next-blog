@@ -44,12 +44,14 @@ export class BaseService<T> {
     page: number;
     pageSize: number;
     locale?: string;
-    category_id?: string;
+    category_id?: number;
   }) {
     try {
       const data = await this.fetchData();
 
       let filteredData = data;
+
+      console.log("----- category_id ? ", category_id);
 
       if ((this.serviceName = "blogs") && filteredData != null) {
         if (locale) {
@@ -59,7 +61,7 @@ export class BaseService<T> {
         }
         if (category_id) {
           filteredData = filteredData!.filter(
-            (item: BlogProps) => item.category_id === 1
+            (item: BlogProps) => item.category_id === category_id
           );
         }
       }
