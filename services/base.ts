@@ -38,13 +38,15 @@ export class BaseService<T> {
   async getPaginated({
     page = 1,
     pageSize = Number(process.env.PAGINATION_COUNT),
-    locale,
     category_id,
+    language_id,
+
   }: {
     page: number;
     pageSize: number;
-    locale?: string;
     category_id?: number;
+    language_id?: number;
+
   }) {
     try {
       const data = await this.fetchData();
@@ -54,9 +56,9 @@ export class BaseService<T> {
       console.log("----- category_id ? ", category_id);
 
       if ((this.serviceName = "blogs") && filteredData != null) {
-        if (locale) {
+        if (language_id) {
           filteredData = filteredData!.filter(
-            (item: BlogProps) => item.language_id === 1
+            (item: BlogProps) => item.language_id === language_id 
           );
         }
         if (category_id) {
@@ -65,6 +67,8 @@ export class BaseService<T> {
           );
         }
       }
+
+      // console.log("filterlenmiş data : ", filteredData)
 
       const startIndex = (page - 1) * pageSize;
       const endIndex = startIndex + pageSize;
