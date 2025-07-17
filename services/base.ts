@@ -35,31 +35,29 @@ export class BaseService<T> {
     }
   }
 
-   
   async getOne({ id }: { id: number }) {
-  try {
-    const data = await this.fetchData();
+    try {
+      const data = await this.fetchData();
 
-    const blog = data.find((item: BlogProps) => item.id === id);
-
-    return blog; 
-  } catch (e) {
-    return null;
+      const blog = data.find(
+        (item: BlogProps | CategoryProps) => item.id === id
+      );
+      return blog;
+    } catch (e) {
+      return null;
+    }
   }
-}
 
   async getPaginated({
     page = 1,
     pageSize = Number(process.env.PAGINATION_COUNT),
     category_id,
     language_id,
-
   }: {
     page: number;
     pageSize: number;
     category_id?: number;
     language_id?: number;
-
   }) {
     try {
       const data = await this.fetchData();
@@ -71,7 +69,7 @@ export class BaseService<T> {
       if ((this.serviceName = "blogs") && filteredData != null) {
         if (language_id) {
           filteredData = filteredData!.filter(
-            (item: BlogProps) => item.language_id === language_id 
+            (item: BlogProps) => item.language_id === language_id
           );
         }
         if (category_id) {
