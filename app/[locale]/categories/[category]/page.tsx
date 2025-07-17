@@ -58,7 +58,7 @@ export default async function Category({
           blogs!.totalLength / Number(process.env.PAGINATION_COUNT)
         }
       >
-        <BlogList blogs={blogs!.paginatedData} />
+        <BlogList blogs={blogs!.paginatedData} lang={locale}/>
       </PaginationBar>
     </div>
   );

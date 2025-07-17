@@ -35,6 +35,19 @@ export class BaseService<T> {
     }
   }
 
+   
+  async getOne({ id }: { id: number }) {
+  try {
+    const data = await this.fetchData();
+
+    const blog = data.find((item: BlogProps) => item.id === id);
+
+    return blog; 
+  } catch (e) {
+    return null;
+  }
+}
+
   async getPaginated({
     page = 1,
     pageSize = Number(process.env.PAGINATION_COUNT),
