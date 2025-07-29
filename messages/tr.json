@@ -25,6 +25,9 @@
     "Beautiful": "Güzel",
     "Stage": "Sahne"
   },
+  "blogs": {
+    "blogsInLanguage": "Türkçe bloglar"
+  },
   "pagination": {
     "previous": "Önceki",
     "next": "Sonraki"

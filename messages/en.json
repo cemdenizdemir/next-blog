@@ -24,6 +24,9 @@
     "Beautiful": "Beautiful",
     "Stage": "Stage"
   },
+  "blogs": {
+    "blogsInLanguage": "Blogs in English"
+  },
   "pagination": {
     "previous": "Previous",
     "next": "Next"

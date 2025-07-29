@@ -1,6 +1,6 @@
 import { Locale } from "@/i18n/routing";
 import { BaseService } from "@/services/base";
-import { getTranslations } from "next-intl/server";
+// import { getTranslations } from "next-intl/server";
 // import Image from "next/image";
 import { CategoriesCarousel } from "@/app/[locale]/categories/CategoriesCarousel";
 import { CategoryProps } from "@/types/types";
@@ -11,7 +11,7 @@ export default async function Categories({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations("categories");
+  // const t = await getTranslations("categories");
 
   const categoryService = new BaseService<CategoryProps>("categories");
   const categories = await categoryService.getAll();

@@ -39,10 +39,9 @@ export class BaseService<T> {
     try {
       const data = await this.fetchData();
 
-      const blog = data.find(
-        (item: BlogProps | CategoryProps) => item.id === id
+      return data.find(
+        (item: BlogProps | CategoryProps | any) => item.id === id
       );
-      return blog;
     } catch (e) {
       return null;
     }
@@ -53,28 +52,33 @@ export class BaseService<T> {
     pageSize = Number(process.env.PAGINATION_COUNT),
     category_id,
     language_id,
+    user_id,
   }: {
     page: number;
     pageSize: number;
     category_id?: number;
     language_id?: number;
+    user_id?: number;
   }) {
     try {
       const data = await this.fetchData();
 
-      let filteredData = data;
+      let filteredData;
 
-      console.log("----- category_id ? ", category_id);
-
-      if ((this.serviceName = "blogs") && filteredData != null) {
+      if ((this.serviceName = "blogs") && data != null) {
         if (language_id) {
-          filteredData = filteredData!.filter(
+          filteredData = data!.filter(
             (item: BlogProps) => item.language_id === language_id
           );
         }
         if (category_id) {
-          filteredData = filteredData!.filter(
+          filteredData = data!.filter(
             (item: BlogProps) => item.category_id === category_id
+          );
+        }
+        if (user_id) {
+          filteredData = data!.filter(
+            (item: BlogProps) => item.user_id === user_id
           );
         }
       }
@@ -90,6 +94,7 @@ export class BaseService<T> {
 
       paginatedData = paginatedData.map((data) => ({
         ...data,
+        language_code: "en",
         content: data.content.slice(0, 200),
       }));
 

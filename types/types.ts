@@ -11,6 +11,7 @@ export type BlogProps = {
   user_id: number;
   category_id: number;
   language_id: number;
+  language_code?: string;
 };
 
 export type CategoryProps = {
