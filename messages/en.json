@@ -4,6 +4,7 @@
     "categories": "Categories",
     "createBlog": "Create Blog",
     "login": "Login",
+    "logOut": "Log Out",
     "signup": "Sign Up"
   },
   "homePage": {

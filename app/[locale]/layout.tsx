@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import { getSession } from "next-auth/react";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -22,6 +24,7 @@ import { getMessages } from "next-intl/server";
 import { Locale, routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/navbar";
+// import { Providers } from "./providers";
 
 export default async function RootLayout({
   children,
@@ -40,6 +43,7 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
+    // <Providers>
     <NextIntlClientProvider messages={messages} locale={locale}>
       <html lang={locale}>
         <body
@@ -52,5 +56,6 @@ export default async function RootLayout({
         </body>
       </html>
     </NextIntlClientProvider>
+    // </Providers>
   );
 }
